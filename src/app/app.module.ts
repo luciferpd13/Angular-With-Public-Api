@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DogsComponent } from './dogs/dogs.component';
-import { DogbreedComponent } from './dogbreed/dogbreed.component'
+import { DogbreedComponent } from './dogbreed/dogbreed.component';
+import { LightboxModule } from 'ngx-lightbox';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DogbreedComponent } from './dogbreed/dogbreed.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    LightboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

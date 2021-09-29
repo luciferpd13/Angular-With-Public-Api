@@ -1,10 +1,13 @@
 
 <section class="container">
-	<h1 class="my-4 text-center text-lg-left">{{id}} Gallery</h1>
+	<h1 class="text-center capital">{{id}} Gallery</h1>
+    <br/>
+    <a  routerLink="/" style="font-size: 18px;">Home</a>
+    <br/><br/>
 	<div class="row gallery">
-		<div class="col-lg-3 col-md-4 col-xs-6 thumb" *ngFor="let item of dogs">
-			<a href="{{item}}">
-				<figure><img class="img-fluid img-thumbnail" src="{{item}}" alt="Random Image"></figure>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb" *ngFor="let item of _album; let i=index">
+			<a>
+				<figure><img class="img-fluid img-thumbnail" src="{{item.src}}" (click)="open(i)" alt="Random Image"></figure>
 			</a>
 		</div>
 	</div>

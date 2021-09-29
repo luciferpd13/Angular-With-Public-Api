@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { GetAPIService } from '../services/get-api.service';
-
-declare var $: any;
+import { Lightbox } from 'ngx-lightbox';
 
 @Component({
   selector: 'app-dogs',
@@ -12,31 +11,27 @@ declare var $: any;
 export class DogsComponent implements OnInit {
   id: any
   dogs: any
+  _album:any = [];
 
-  constructor(private route: ActivatedRoute, private apiService: GetAPIService) { }
+  constructor(private route: ActivatedRoute, private apiService: GetAPIService, private _lightbox: Lightbox) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')
     let url = "https://dog.ceo/api/breed/" + this.id + "/images"
-    this.apiService.getAPI(url).subscribe(dogs => {
-      this.dogs = dogs.message
+    this.apiService.getAPI(url).subscribe(_album => {
+      this.dogs = _album.message
+      for (var dog in this.dogs)
+        {  
+            this._album.push({src : this.dogs[dog], caption: '', thumb: '' }) 
+        } 
     })
+  }
 
-    $(document).ready(function() {
-      $(".gallery").magnificPopup({
-        delegate: "a",
-        type: "image",
-        tLoading: "Loading image #%curr%...",
-        mainClass: "mfp-img-mobile",
-        gallery: {
-          enabled: true,
-          navigateByImgClick: true,
-          preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-        },
-        image: {
-          tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-        }
-      });
-    })
+  open(index: number): void {
+    this._lightbox.open(this._album, index);
+  }
+
+  close(): void {
+    this._lightbox.close();
   }
 }
