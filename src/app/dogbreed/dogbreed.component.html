@@ -1,0 +1,10 @@
+<div class="container">
+    <h1 class="text-center">Dog Breeds</h1>
+    <div class="row">
+        <article routerLink="dog/{{item.key}}" class="card analytics-card" *ngFor="let item of breeds | keyvalue">
+            <div class="text-center">
+                <h4 class="card-title capital">{{item.key}}</h4>
+            </div>
+        </article>
+    </div>
+</div>
