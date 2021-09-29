@@ -1,4 +1,4 @@
-# Demostration of Public API using Angular 11
+# Demonstration of Public API using Angular 11
 [See Demo](https://angular-public-api.web.app/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
